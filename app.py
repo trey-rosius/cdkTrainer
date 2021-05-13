@@ -13,7 +13,11 @@ from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
 
 
 app = core.App()
-CdkTrainerStack(app, "CdkTrainerStack",
+CdkTrainerStack(app, "CdkTrainerStack",env={
+    
+    'account':'132260253285',
+    'region': 'us-east-2'}
+
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

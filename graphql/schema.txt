@@ -1,0 +1,48 @@
+
+type Trainers {
+
+    id: ID!
+    firstName:String!
+    lastName:String!
+    age:Int!
+    specialty:Specialty
+    
+    
+
+}
+
+enum Specialty{
+    BODYBUILDING,
+    YOUTHFITNESS,
+    SENIORFITNESS,
+    CORRECTIVEEXERCISE
+
+}
+
+
+ type PaginatedTrainers {
+                    items: [Trainers!]!
+                    nextToken: String
+                }
+
+                type Query {
+                    allTrainers(limit: Int, nextToken: String): PaginatedTrainers!
+                    getTrainer(id: ID!): Trainers
+                }
+                type Mutation {
+                    createTrainer( firstName:String!,
+    lastName:String!,
+    age:Int!,
+    specialty:Specialty): Trainers
+                    deleteTrainer(id: ID!): Trainers
+                    updateTrainers(id: ID!,
+    firstName:String,
+    lastName:String,
+    age:Int,
+    specialty:Specialty):Trainers
+
+                }
+                type Schema {
+                    query: Query
+                    mutation: Mutation
+                }

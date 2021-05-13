@@ -1,7 +1,7 @@
 
-# Welcome to your CDK Python project!
+# CDK Python api !
 
-This is a blank project for Python development with CDK.
+This project strives to cover all the basics with respect to building a serverless api with
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
