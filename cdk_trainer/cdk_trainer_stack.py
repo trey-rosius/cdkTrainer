@@ -1,5 +1,5 @@
 from aws_cdk import core as cdk
-from aws_cdk import core
+
 from aws_cdk.aws_appsync import (
     CfnGraphQLSchema,
     CfnGraphQLApi,
