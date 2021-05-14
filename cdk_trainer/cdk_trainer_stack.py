@@ -1,3 +1,4 @@
+from aws_cdk import core
 from aws_cdk import core as cdk
 
 from aws_cdk.aws_appsync import (
@@ -33,8 +34,17 @@ dirname = os.path.dirname(__file__)
 
 with open(os.path.join(dirname, "../graphql/schema.txt"), 'r') as file:
             data = file.read().replace('\n', '')
-with open(os.path.join(dirname, "../resolver_function/update_trainer"), 'r') as file:
-            update_trainer = file.read().replace('\n', '')            
+with open(os.path.join(dirname, "../resolver_functions/create_trainer"), 'r') as file:
+            create_trainer = file.read().replace('\n', '')             
+with open(os.path.join(dirname, "../resolver_functions/update_trainer"), 'r') as file:
+            update_trainer = file.read().replace('\n', '')
+with open(os.path.join(dirname, "../resolver_functions/get_trainer"), 'r') as file:
+            get_trainer = file.read().replace('\n', '')   
+with open(os.path.join(dirname, "../resolver_functions/all_trainers"), 'r') as file:
+            all_trainers = file.read().replace('\n', '')   
+with open(os.path.join(dirname, "../resolver_functions/delete_trainer"), 'r') as file:
+            delete_trainer = file.read().replace('\n', '')                                   
+
 
 class CdkTrainerStack(cdk.Stack):
 
@@ -112,14 +122,7 @@ class CdkTrainerStack(cdk.Stack):
             type_name='Query',
             field_name='getTrainer',
             data_source_name=data_source.name,
-            request_mapping_template=f"""\
-            {{
-                "version": "2017-02-28",
-                "operation": "GetItem",
-                "key": {{
-                "id": $util.dynamodb.toDynamoDBJson($ctx.args.id)
-                }}
-            }}""",
+            request_mapping_template=get_trainer,
             response_mapping_template="$util.toJson($ctx.result)"
         )
 
@@ -131,40 +134,19 @@ class CdkTrainerStack(cdk.Stack):
             type_name='Query',
             field_name='allTrainers',
             data_source_name=data_source.name,
-            request_mapping_template=f"""\
-            {{
-                "version": "2017-02-28",
-                "operation": "Scan",
-                "limit": $util.defaultIfNull($ctx.args.limit, 20),
-                "nextToken": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))
-            }}""",
+            request_mapping_template=all_trainers,
             response_mapping_template="$util.toJson($ctx.result)"
         )
 
         get_all_trainers_resolver.add_depends_on(api_schema)
-
+     
         create_trainers_resolver = CfnResolver(
             self, 'CreateTrainerMutationResolver',
             api_id=trainers_graphql_api.attr_api_id,
             type_name='Mutation',
             field_name='createTrainer',
             data_source_name=data_source.name,
-            request_mapping_template=f"""\
-            {{
-                "version": "2017-02-28",
-                "operation": "PutItem",
-                "key": {{
-                    "id": {{ "S": "$util.autoId()" }}
-                }},
-                "attributeValues": {{
-                    "firstName": $util.dynamodb.toDynamoDBJson($ctx.args.firstName),
-                    "lastName": $util.dynamodb.toDynamoDBJson($ctx.args.lastName),
-                    "age": $util.dynamodb.toDynamoDBJson($ctx.args.age),
-                    "specialty": $util.dynamodb.toDynamoDBJson($ctx.args.specialty)
-
-
-                }}
-            }}""",
+            request_mapping_template=create_trainer,
             response_mapping_template="$util.toJson($ctx.result)"
         )
 
@@ -187,14 +169,7 @@ class CdkTrainerStack(cdk.Stack):
             type_name='Mutation',
             field_name='deleteTrainer',
             data_source_name=data_source.name,
-            request_mapping_template=f"""\
-            {{
-                "version": "2017-02-28",
-                "operation": "DeleteItem",
-                "key": {{
-                "id": $util.dynamodb.toDynamoDBJson($ctx.args.id)
-                }}
-            }}""",
+            request_mapping_template=delete_trainer,
             response_mapping_template="$util.toJson($ctx.result)"
         )
 

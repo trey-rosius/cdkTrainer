@@ -15,7 +15,7 @@ from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
 app = core.App()
 CdkTrainerStack(app, "CdkTrainerStack",env={
     
-    'account':'xxxxxxxxxxx',
+    'account':'132260253285',
     'region': 'us-east-2'}
 
     # If you don't specify 'env', this stack will be environment-agnostic.
