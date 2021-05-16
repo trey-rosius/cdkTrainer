@@ -13,7 +13,7 @@ class PipelineStack(core.Stack):
         source_artifact = codepipeline.Artifact()
         cloud_assembly_artifact = codepipeline.Artifact()
 
-        pipeline = pipelines.CdkPipeline(self, 'Pipeline',
+       pipelines.CdkPipeline(self, 'Pipeline',
 
         cloud_assembly_artifact=cloud_assembly_artifact,
         pipeline_name='TrainerPipeline',
@@ -31,10 +31,7 @@ class PipelineStack(core.Stack):
                 synth_command= 'cdk synth')
             )
 
-        pipeline.add_application_stage(WebServiceStage(self,'Pre-Prod',env={
-    
-            'account':'132260253285',
-            'region': 'us-east-2'}))    
+   
              
         
 
