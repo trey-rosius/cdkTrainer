@@ -31,7 +31,7 @@ class PipelineStack(core.Stack):
                 cloud_assembly_artifact=cloud_assembly_artifact,
                 install_command='npm install -g aws-cdk && pip install -r requirements.txt',
                 synth_command= 'cdk synth'))
-        pipeline.add_application_stage(WebServiceStage(self,'Pre-Prod',env={
+        pipeline.add_application_stage(WebServiceStage(self,'Pre-Produc',env={
     
     'account':'132260253285',
     'region': 'us-east-2'}))    

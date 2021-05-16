@@ -46,7 +46,7 @@ with open(os.path.join(dirname, "../resolver_functions/delete_trainer"), 'r') as
             delete_trainer = file.read().replace('\n', '')                                   
 
 
-class CdkTrainerStack(core.Stack):
+class CdkTrainerStack(cdk.Stack):
 
     def __init__(self, scope: cdk.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
