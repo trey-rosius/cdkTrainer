@@ -16,7 +16,7 @@ from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
 
 app = core.App()
 
-CdkTrainerStack(app,'TrainerStack')
+CdkTrainerStack(app,'CdkTrainerStack')
 PipelineStack(app, 'TrainerPipelineStack',env={
     
     'account':'132260253285',
