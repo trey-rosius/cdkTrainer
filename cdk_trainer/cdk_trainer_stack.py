@@ -172,5 +172,5 @@ class CdkTrainerStack(core.Stack):
             request_mapping_template=delete_trainer,
             response_mapping_template="$util.toJson($ctx.result)"
         )
-
+#core
         delete_trainer_resolver.add_depends_on(api_schema)
