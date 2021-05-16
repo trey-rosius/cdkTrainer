@@ -10,13 +10,12 @@ from aws_cdk import core as cdk
 from aws_cdk import core
 
 from cdk_trainer.pipeline_stack import PipelineStack
-from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
 
 
 
 app = core.App()
 
-CdkTrainerStack(app,'CdkTrainerStack')
+
 PipelineStack(app, 'TrainerPipelineStack',env={
     
     'account':'132260253285',
