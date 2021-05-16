@@ -33,7 +33,7 @@ dirname = os.path.dirname(__file__)
 # being updated to use `cdk`.  You may delete this import if you don't need it.
 
 with open(os.path.join(dirname, "../graphql/schema.txt"), 'r') as file:
-            data = file.read().replace('\n', '')
+            data_schema = file.read().replace('\n', '')
 with open(os.path.join(dirname, "../resolver_functions/create_trainer"), 'r') as file:
             create_trainer = file.read().replace('\n', '')             
 with open(os.path.join(dirname, "../resolver_functions/update_trainer"), 'r') as file:
@@ -69,7 +69,7 @@ class CdkTrainerStack(cdk.Stack):
         api_schema = CfnGraphQLSchema(
             self,"TrainersSchema",
             api_id = trainers_graphql_api.attr_api_id,
-            definition=data
+            definition=data_schema
         )
 
         trainers_table = Table(
