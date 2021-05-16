@@ -16,7 +16,7 @@ from cdk_trainer.pipeline_stack import PipelineStack
 
 app = core.App()
 
-CdkTrainerStack(app, "CdkTrainerStack"
+CdkTrainerStack(app, "CdkTrainerStack")
 PipelineStack(app, 'TrainerPipelineStack',env={
     
     'account':'132260253285',
@@ -37,5 +37,5 @@ PipelineStack(app, 'TrainerPipelineStack',env={
     #env=core.Environment(account='123456789012', region='us-east-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    ))
+    )
 app.synth()
