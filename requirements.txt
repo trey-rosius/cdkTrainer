@@ -2,3 +2,7 @@ aws-cdk.core
 aws-cdk.aws-appsync
 aws-cdk.aws-dynamodb
 aws-cdk.aws-iam
+aws-cdk.pipelines
+aws-cdk.aws-codebuild
+aws-cdk.aws-codepipeline
+aws-cdk.aws-codepipeline-actions

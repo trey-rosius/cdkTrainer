@@ -10,12 +10,16 @@ from aws_cdk import core as cdk
 from aws_cdk import core
 
 from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
+from cdk_trainer.pipeline_stack import PipelineStack
+
 
 
 app = core.App()
-CdkTrainerStack(app, "CdkTrainerStack",env={
+
+CdkTrainerStack(app, "CdkTrainerStack"
+PipelineStack(app, 'TrainerPipelineStack',env={
     
-    'account':'xxxxxxxxxxx',
+    'account':'132260253285',
     'region': 'us-east-2'}
 
     # If you don't specify 'env', this stack will be environment-agnostic.
@@ -33,6 +37,5 @@ CdkTrainerStack(app, "CdkTrainerStack",env={
     #env=core.Environment(account='123456789012', region='us-east-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
-
+    ))
 app.synth()

@@ -4,7 +4,7 @@ type Trainers {
     id: ID!
     firstName:String!
     lastName:String!
-    age:Int!
+    age:Int
     specialty:Specialty
     
     
