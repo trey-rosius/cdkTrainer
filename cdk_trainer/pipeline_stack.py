@@ -38,8 +38,7 @@ class PipelineStack(core.Stack):
 
         pipeline.add_application_stage(WebServiceStage(self, 'Production', env={
         'account':'132260253285',
-        'region': 'us-east-2'
-    }))
+        'region': 'us-east-2'}))
 
    
              
