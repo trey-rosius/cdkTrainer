@@ -33,8 +33,13 @@ class PipelineStack(core.Stack):
                 synth_command= 'cdk synth'))
         pipeline.add_application_stage(WebServiceStage(self,'Pre-Produc',env={
     
-    'account':'132260253285',
-    'region': 'us-east-2'}))    
+        'account':'132260253285',
+        'region': 'us-east-2'}))    
+
+        pipeline.add_application_stage(WebServiceStage(self, 'Production', env={
+        'account': APP_ACCOUNT,
+        'region': 'us-east-2',
+    }))
 
    
              
