@@ -1,5 +1,5 @@
 from aws_cdk import core
-from aws_cdk import core as cdk
+
 
 from aws_cdk.aws_appsync import (
     CfnGraphQLSchema,
@@ -46,9 +46,9 @@ with open(os.path.join(dirname, "../resolver_functions/delete_trainer"), 'r') as
             delete_trainer = file.read().replace('\n', '')                                   
 
 
-class CdkTrainerStack(cdk.Stack):
+class CdkTrainerStack(core.Stack):
 
-    def __init__(self, scope: cdk.Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # The code that defines your stack goes here
