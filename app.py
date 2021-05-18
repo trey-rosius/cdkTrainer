@@ -12,14 +12,14 @@ import os
 from aws_cdk import core
 
 
-from cdk_trainer.pipeline_stack import PipelineStack
+from cdk_trainer.cdk_trainer_stack import CdkTrainerStack
 
 
 
 app = core.App()
 
 
-PipelineStack(app, 'TrainerPipelineStack',env={
+CdkTrainerStack(app, 'TrainerStack',env={
     
     'account':'132260253285',
     'region': 'us-east-2'}
